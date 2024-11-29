@@ -46,6 +46,9 @@ class ConnectivityService {
 	}
 
 	public function testCapabilities(OutputInterface $output): void {
+		if (!$this->hasCapabilities()) {
+			return;
+		}
 		$this->capabilitiesService->resetCache();
 		$this->capabilitiesService->fetch();
 		$output->writeln('<info>✓ Fetched /hosting/capabilities endpoint</info>');
